@@ -1,0 +1,34 @@
+<!doctype html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>TV Showtimes</title>
+
+    <!--build:js -->
+    <script src="node_modules/localforage/dist/localforage.min.js"></script>
+    <script src="lib/ejs_production.js"></script>
+    <script src="node_modules/moment/min/moment.min.js"></script>
+    <script src="index.js"></script>
+    <!-- endbuild -->
+
+    <!--build:css -->
+    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/normalizecss/normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- endbuild -->
+
+</head>
+
+<body>
+    <div>
+        <div id="sidebar">
+            <input id='input-add-show' placeholder='Type a show title to add'>
+            <p>
+                <i id='button-refresh-shows' class="fa fa-refresh"></i>
+                Last updated: <span id='last-updated'></span>
+            </p>
+            <hr>
+        </div>
+        <div id="show-content"></div>
+    </div>
+
+</body>

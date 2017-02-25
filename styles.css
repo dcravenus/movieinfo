@@ -1,0 +1,90 @@
+body {
+  margin: 0 auto;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+
+  width: 20em;
+  background-color: darkslateblue;
+
+  padding: 1em;
+
+  color: #d8d8d8;
+}
+
+#sidebar input {
+  color: black;
+}
+
+div[id*="show-title"] {
+  cursor: pointer;
+}
+
+#show-content {
+
+  padding: 1em;
+
+  color: #3c3c3c;
+}
+
+/* CSS Tricks Pretty hr */
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+i {
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  #sidebar {
+    position: relative;
+    width: 100%;
+  }
+
+  #sidebar input {
+    width: calc(100% - 2em);
+    font-size: 120%;
+  }
+
+  #sidebar hr {
+    display: none;
+  }
+
+
+  div[id*="show-title"] {
+    display: none;
+  }
+
+  .show-container {
+    text-align: center;
+    font-size: 120%;
+  }
+
+  .show-container .flex-container {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 721px) {
+  #show-content {
+    margin-left: 22em;
+  }
+
+  #sidebar input {
+    width: 20em;
+  }
+}
