@@ -1,40 +1,14 @@
-<div class='show-container' id='show-container-<%=id%>'>
+<div class='show-container' id='show-container-<%=imdbID%>'>
     <div class="flex-container">
         <div style="margin-right: 2em;">
-            <h3><i onclick="removeShow(<%=id%>)"class='fa fa-times'></i> <%=name%> </h3>
-            <img src="<%=image.medium%>" />
+            <h3><i onclick="removeShow(<%=imdbID%>)"class='fa fa-times'></i> <%=Title%> </h3>
+            <img src="<%=Poster%>" />
         </div>
-        <div>
-            <h4>Latest Episode: S<%=_embedded.previousepisode.season%>E<%=_embedded.previousepisode.number%> - <%=_embedded.previousepisode.name%></h4>
-
-            <%
-            //Create seasons array
-            _embedded.episodes.reduce(function(array, episode){
-                if(array.length < episode.season){
-                    array.push([episode]);
-                } else {
-                    array[episode.season-1].push(episode);
-                }
-
-                return array;
-            },[]).forEach(function(season, index){
-            %>
-
-            <h4 onclick="toggleSeason('<%=id%>-<%=index+1%>')" style="cursor: pointer;">Season <%=index+1%></h4>
-
-            <div id="<%=id%>-<%=index+1%>" style="display:none;">
-                <table class='table'>
-                <tr><th>Episode</th><th>Name</th><th>Airdate</th></tr>
-                <% season.forEach(function(episode){%>
-                    <tr><td><%=episode.number%></td><td><%=episode.name%></td><td><%=episode.airdate%></td></tr>
-                <%})%>
-                </table>
-            </div>
-            <%
-            });
-
-            %>
-
+        <div style="max-width: 50%;">
+            <p><%=Plot%></p>
+            <h3>Metascore: <%=Metascore%></h3>
+            <h3><%=Released%></h3>
+            <h3><%=Rated%></h3>
 
         </div>
     </div>

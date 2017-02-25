@@ -1,5 +1,5 @@
 function addShow(show_id) {
-    if(!shows.find((show)=>show_id===show.id)) {
+    if(!shows.find((show)=>show_id===show.imdbID)) {
         getShowData(show_id).then(function(data){
             shows.push(data);
             localforage.setItem('shows', shows);
@@ -28,7 +28,8 @@ function removeShow(show_id) {
 
 function getShowData(show_id) {
     var promise = new Promise(function(accept, reject){
-        var url = 'http://api.tvmaze.com/shows/' + show_id + '?embed[]=episodes&embed[]=nextepisode&embed[]=previousepisode'
+        //var url = 'http://api.tvmaze.com/shows/' + show_id + '?embed[]=episodes&embed[]=nextepisode&embed[]=previousepisode'
+        var url = 'http://www.omdbapi.com/?i=' + show_id + '&plot=short&r=json';
 
         fetch(url).then(function(response){
             response.json().then(function(data){
@@ -58,11 +59,15 @@ function appendShow(show_data){
 }
 
 function searchForShow(show_query){
-    url = 'http://api.tvmaze.com/singlesearch/shows?q=' + show_query
+    url = `http://www.omdbapi.com/?t=${show_query}&y=&plot=short&r=json`;
 
     fetch(url).then(function(response){
         response.json().then(function(data){
-            addShow(data.id);
+            if(data.Response === 'False'){
+                console.log(data.Error);
+            } else {
+                addShow(data.imdbID);
+            }
         })
     })
 }
