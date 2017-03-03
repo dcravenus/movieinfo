@@ -2,7 +2,7 @@ function addShow(show_id) {
     if(!shows.find((show)=>show_id===show.imdbID)) {
         getShowData(show_id).then(function(data){
             shows.push(data);
-            localforage.setItem('shows', shows);
+            localforage.setItem('movieinfo_films', shows);
             appendShow(data);
         });
     }
@@ -12,7 +12,7 @@ function removeShow(show_id) {
     shows = shows.filter(function(show){
         return show.id != show_id;
     });
-    localforage.setItem('shows', shows);
+    localforage.setItem('movieinfo_films', shows);
 
     //Remove show from DOM
     var node = document.getElementById("show-container-"+show_id);
@@ -80,13 +80,13 @@ function refreshShow(show_id){
             }
             appendShow(show_data);
         });
-        localforage.setItem('shows', shows)
+        localforage.setItem('movieinfo_films', shows)
     });
 }
 
 function refreshShows(){
     last_refreshed = Date.now();
-    localforage.setItem('last_refreshed', last_refreshed);
+    localforage.setItem('movieinfo_last_refreshed', last_refreshed);
 
     updateLastUpdated();
     shows.forEach(function(show){
@@ -157,7 +157,7 @@ function init() {
         });
     });
 
-    localforage.getItem('shows').then(function(shows_data){
+    localforage.getItem('movieinfo_films').then(function(shows_data){
         if (shows_data) {
             shows = shows_data;
         }
@@ -169,7 +169,7 @@ function init() {
         //refreshShows();
     });
 
-    localforage.getItem('last_refreshed').then(function(data){
+    localforage.getItem('movieinfo_last_refreshed').then(function(data){
         last_refreshed = data ? data : 0;
         updateLastUpdated();
     });
