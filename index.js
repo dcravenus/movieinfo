@@ -28,8 +28,7 @@ function removeShow(show_id) {
 
 function getShowData(show_id) {
     var promise = new Promise(function(accept, reject){
-        //var url = 'http://api.tvmaze.com/shows/' + show_id + '?embed[]=episodes&embed[]=nextepisode&embed[]=previousepisode'
-        var url = 'http://www.omdbapi.com/?i=' + show_id + '&plot=short&r=json';
+        var url = 'http://www.omdbapi.com/?i=' + show_id + '&plot=short&r=json&tomatoes=true';
 
         fetch(url).then(function(response){
             response.json().then(function(data){
