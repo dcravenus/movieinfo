@@ -10,7 +10,7 @@ function addShow(show_id) {
 
 function removeShow(show_id) {
     shows = shows.filter(function(show){
-        return show.id != show_id;
+        return show.imdbID != show_id;
     });
     localforage.setItem('movieinfo_films', shows);
 
