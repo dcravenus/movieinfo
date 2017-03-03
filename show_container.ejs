@@ -1,17 +1,28 @@
 <div class='show-container' id='show-container-<%=imdbID%>'>
     <div class="flex-container">
         <div style="margin-right: 2em;">
-            <h3><i onclick="removeShow('<%=imdbID%>')"class='fa fa-times'></i> <%=Title%> </h3>
+            <div class="movie-title"><i onclick="removeShow('<%=imdbID%>')"class='fa fa-times'></i> <%=Title%>
+                <div>
+                    <span><%=Released%></span>
+                    <span>-</span>
+                    <span><%=Rated%></span>
+                </div>
+            </div>
+
             <img src="<%=Poster%>" />
         </div>
-        <div style="max-width: 50%;">
-            <p><%=Plot%></p>
-            <h3>Metascore: <%=Metascore%></h3>
-            <h3><%=Released%></h3>
-            <h3><%=Rated%></h3>
+        <div id="info-container">
+            <h4>Critics Consensus:</h4>
+            <p><%=tomatoConsensus%></p>
 
-            <h3><%=tomatoConsensus%></h3>
-            <h3><%=tomatoMeter%>%</h3>
+            <div id="scores-container">
+                <span>Metascore: <%=Metascore%></span>
+                <span>-</span>
+                <span>Tomatometer: <%=tomatoMeter%>%
+                </span>
+            </div>
+
+
 
         </div>
     </div>

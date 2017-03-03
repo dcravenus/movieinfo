@@ -87,4 +87,27 @@ i {
   #sidebar input {
     width: 20em;
   }
+
+}
+
+@media (min-width: 1048px) {
+  #info-container {
+    max-width: 50%;
+  }
+}
+
+#scores-container {
+  display: flex;
+}
+
+#scores-container span {
+  flex-grow: 1;
+}
+
+.movie-title {
+  font-size: 120%;
+}
+
+.movie-title div {
+  font-size: 80%;
 }
