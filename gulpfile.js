@@ -18,6 +18,7 @@ var jsFiles = [
   'node_modules/localforage/dist/localforage.min.js',
   'lib/ejs_production.js',
   'node_modules/moment/min/moment.min.js',
+  'node_modules/tinycolor2/dist/tinycolor-min.js',
   'dist/scripts/index.js'
 ];
 

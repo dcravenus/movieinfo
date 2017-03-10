@@ -134,6 +134,11 @@ function sortShowByName(a, b){
     return 0;
 }
 
+function changeSidebarColor(color){
+    document.getElementById('sidebar').style.background = color.toHexString();
+    document.getElementById('sidebar').style.color = tinycolor.mostReadable(color, color.clone().monochromatic()).toHexString();
+}
+
 function init() {
 
     document.addEventListener("DOMContentLoaded", function(event) {
@@ -154,6 +159,13 @@ function init() {
         refresh_shows_button.addEventListener('click', function(){
             refreshShows();
         });
+
+        var colorPicker = document.getElementById('input-change-color');
+        colorPicker.addEventListener('input', function(){
+            sidebar_color = tinycolor(colorPicker.value);
+            changeSidebarColor(sidebar_color);
+            localforage.setItem('movieinfo_sidebar_color', sidebar_color.toHexString());
+        });
     });
 
     localforage.getItem('movieinfo_films').then(function(shows_data){
@@ -172,8 +184,24 @@ function init() {
         last_refreshed = data ? data : 0;
         updateLastUpdated();
     });
+
+    localforage.getItem('movieinfo_sidebar_color').then(function(data){
+        if(!data){
+            data = '#483d8b';
+        }
+        var colorPicker = document.getElementById('input-change-color');
+        colorPicker.value = data;
+        colorPicker.dispatchEvent(new Event('input', {
+            'bubbles': true,
+            'cancelable': true
+        }));
+
+//        sidebar_color = tinycolor(data);
+//        changeSidebarColor(sidebar_color);
+    });
 }
 
 var shows = [];
 var last_refreshed = 0;
+var sidebar_color;
 init();

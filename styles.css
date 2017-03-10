@@ -10,11 +10,10 @@ i {
 
 #sidebar {
   grid-area: sidebar;
-  background-color: darkslateblue;
 
   padding: 1em;
+  color: white;
 
-  color: #d8d8d8;
 }
 
 #sidebar input {
@@ -65,6 +64,14 @@ hr {
 .flex div {
   flex-shrink: 1;
   max-width: 500px;
+}
+
+#sidebar input#input-change-color {
+  width: 20px;
+  float: right;
+  padding: 0;
+  border-width: 0;
+  background-color: transparent;
 }
 
 /* Media Queries */
