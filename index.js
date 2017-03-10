@@ -74,10 +74,9 @@ function searchForShow(show_query){
 function refreshShow(show_id){
     getShowData(show_id).then(function(show_data){
         shows.forEach(function(show, index){
-            if(show.id === show_id) {
+            if(show.imdbID === show_id) {
                 shows[index] = show_data;
             }
-            appendShow(show_data);
         });
         localforage.setItem('movieinfo_films', shows)
     });
@@ -89,7 +88,7 @@ function refreshShows(){
 
     updateLastUpdated();
     shows.forEach(function(show){
-        refreshShow(show.id);
+        refreshShow(show.imdbID);
     });
 }
 
