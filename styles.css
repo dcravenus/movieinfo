@@ -2,13 +2,14 @@ body {
   margin: 0 auto;
 }
 
-#sidebar {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
+i {
+  cursor: pointer;
+}
 
-  width: 20em;
+/* Sidebar */
+
+#sidebar {
+  grid-area: sidebar;
   background-color: darkslateblue;
 
   padding: 1em;
@@ -24,13 +25,6 @@ div[id*="show-title"] {
   cursor: pointer;
 }
 
-#show-content {
-
-  padding: 1em;
-
-  color: #3c3c3c;
-}
-
 /* CSS Tricks Pretty hr */
 hr {
     border: 0;
@@ -39,20 +33,49 @@ hr {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+
+
+#movies-container {
+  padding: 1em;
+  color: #3c3c3c;
+  grid-area: movies-container;
 }
 
-i {
-  cursor: pointer;
+.show-container {
+  padding-bottom: 50px;
 }
+
+.movie-title {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.info-container {
+
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex div {
+  flex-shrink: 1;
+  max-width: 500px;
+}
+
+/* Media Queries */
 
 @media (max-width: 720px) {
-  #sidebar {
-    position: relative;
-    width: 100%;
+  #grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content;
+    grid-template-areas: "sidebar"
+                         "movies-container";
   }
 
   #sidebar input {
@@ -64,50 +87,20 @@ i {
     display: none;
   }
 
-
   div[id*="show-title"] {
     display: none;
-  }
-
-  .show-container {
-    text-align: center;
-    font-size: 120%;
-  }
-
-  .show-container .flex-container {
-    display: inline-block;
   }
 }
 
 @media (min-width: 721px) {
-  #show-content {
-    margin-left: 22em;
+  #grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: max-content;
+    grid-template-areas: "sidebar movies-container";
   }
 
   #sidebar input {
     width: 20em;
   }
-
-}
-
-@media (min-width: 1048px) {
-  #info-container {
-    max-width: 50%;
-  }
-}
-
-#scores-container {
-  display: flex;
-}
-
-#scores-container span {
-  flex-grow: 1;
-}
-
-.movie-title {
-  font-size: 120%;
-}
-
-.movie-title div {
-  font-size: 80%;
 }

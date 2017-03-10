@@ -52,7 +52,7 @@ function appendShow(show_data){
         parent.innerHTML = '';
         parent.appendChild(show_div);
     } else {
-        document.getElementById('show-content').appendChild(show_div);
+        document.getElementById('movies-container').appendChild(show_div);
         document.getElementById('sidebar').appendChild(show_title_div);
     }
 }
